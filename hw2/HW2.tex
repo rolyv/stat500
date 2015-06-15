@@ -1,0 +1,777 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Homework 2}
+    \author{Roly Vicar\'ia \\ STAT 500, Summer 2015}
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle  
+
+    
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+    \subsubsection{Question 1}\label{question-1}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+        
+        \PY{c}{\PYZsh{} DDE to PCB ratios}
+        \PY{n}{terrestrial} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{76.5}\PY{p}{,}\PY{l+m+mf}{6.03}\PY{p}{,}\PY{l+m+mf}{3.51}\PY{p}{,}\PY{l+m+mf}{9.96}\PY{p}{,}\PY{l+m+mf}{4.24}\PY{p}{,}\PY{l+m+mf}{7.74}\PY{p}{,}\PY{l+m+mf}{9.54}\PY{p}{,}\PY{l+m+mf}{41.7}\PY{p}{,}\PY{l+m+mf}{1.84}\PY{p}{,}\PY{l+m+mf}{2.5}\PY{p}{,}\PY{l+m+mf}{1.64}\PY{p}{]}\PY{p}{)}
+        \PY{n}{aquatic} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{27}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{61}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{54}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{14}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{63}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{23}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{56}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{48}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{16}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{18}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{terrestrial}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{terrestrial}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{aquatic}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{aquatic}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+    \paragraph{1a. Compute mean and median for 21 data points, ignoring type
+of
+feeder}\label{a.-compute-mean-and-median-for-21-data-points-ignoring-type-of-feeder}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{combined} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{aquatic}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{terrestrial}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Combined mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{combined}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Combined median: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{combined}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Combined mean: 8.04761904762
+Combined median: 1.64
+    \end{Verbatim}
+
+    \paragraph{1b. Compute mean and median separately for each
+type}\label{b.-compute-mean-and-median-separately-for-each-type}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Aquatic mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{aquatic}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Aquatic median: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{aquatic}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{p}{)}
+        
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Terrestrial mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{terrestrial}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Terrestrial median: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{terrestrial}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Aquatic mean: 0.38
+Aquatic median: 0.375
+Terrestrial mean: 15.0181818182
+Terrestrial median: 6.03
+    \end{Verbatim}
+
+    \paragraph{1c. Comment on the relative sensitivity of the mean and
+median to extreme values in a data
+set}\label{c.-comment-on-the-relative-sensitivity-of-the-mean-and-median-to-extreme-values-in-a-data-set}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c}{\PYZsh{} trimming out 2 large values from terrestrial group}
+        \PY{n}{df}\PY{o}{.}\PY{n}{terrestrial}\PY{p}{[}\PY{n}{df}\PY{o}{.}\PY{n}{terrestrial} \PY{o}{\PYZlt{}} \PY{l+m+mi}{40}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 5.2222222222222223
+\end{Verbatim}
+        
+    The results show that the mean is more sensitive to extreme values than
+the median. I think it's most apparent when looking at the terrestrial
+values where the mean is \textasciitilde{}15 and the median is
+\textasciitilde{}6. Two large values sway the mean. If we took the mean
+without those two large values, the mean of the terrestrial data would
+be 5.22.
+
+    \paragraph{1d. Comment on the appropriateness of using mean and median
+as measure of central location for DDE to PCB ratio for two types of
+feeders.}\label{d.-comment-on-the-appropriateness-of-using-mean-and-median-as-measure-of-central-location-for-dde-to-pcb-ratio-for-two-types-of-feeders.}
+
+    I think that for the terrestrial group, the appropriate measure would be
+the median since the mean was swayed significantly by two larger values.
+For the aquatic group, either one would work since they are similar and
+the data is fairly evenly distributed.
+
+    \paragraph{1e. Compute a measure of dispersion for the two types of
+feeder separately that is
+resistant}\label{e.-compute-a-measure-of-dispersion-for-the-two-types-of-feeder-separately-that-is-resistant}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{mycode} \PY{k+kn}{as} \PY{n+nn}{m}
+        \PY{c}{\PYZsh{}importing mycode because Minitab\PYZsq{}s algorithm for quartiles does not }
+        \PY{c}{\PYZsh{}exist in python. Had to implement myself}
+        
+        \PY{n}{q\PYZus{}low} \PY{o}{=} \PY{n}{m}\PY{o}{.}\PY{n}{quartile}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{aquatic}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{q\PYZus{}high} \PY{o}{=} \PY{n}{m}\PY{o}{.}\PY{n}{quartile}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{aquatic}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n}{aquatic\PYZus{}iqr} \PY{o}{=} \PY{n}{q\PYZus{}high} \PY{o}{\PYZhy{}} \PY{n}{q\PYZus{}low}
+        
+        \PY{n}{q\PYZus{}low} \PY{o}{=} \PY{n}{m}\PY{o}{.}\PY{n}{quartile}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{terrestrial}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{q\PYZus{}high} \PY{o}{=} \PY{n}{m}\PY{o}{.}\PY{n}{quartile}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{terrestrial}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n}{terrestrial\PYZus{}iqr} \PY{o}{=} \PY{n}{q\PYZus{}high} \PY{o}{\PYZhy{}} \PY{n}{q\PYZus{}low}
+        
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Aquatic IQR: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{aquatic\PYZus{}iqr}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Terrestrial IQR: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{terrestrial\PYZus{}iqr}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Aquatic IQR: 0.3975
+Terrestrial IQR: 7.46
+    \end{Verbatim}
+
+    \paragraph{1f. Compute a measure of dispersion for the two types of
+feeder separately that is non
+resistant}\label{f.-compute-a-measure-of-dispersion-for-the-two-types-of-feeder-separately-that-is-non-resistant}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Aquatic range: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{aquatic}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{df}\PY{o}{.}\PY{n}{aquatic}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Terrestrial range: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{terrestrial}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{df}\PY{o}{.}\PY{n}{terrestrial}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Aquatic range: 0.49
+Terrestrial range: 74.86
+    \end{Verbatim}
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+\subsubsection{Question 2}\label{question-2}
+
+    \paragraph{2a. When the data set has some extreme outliers, can we trim
+some of the data and use the trimmed data set to carry out analysis to
+make inference about the central
+location?}\label{a.-when-the-data-set-has-some-extreme-outliers-can-we-trim-some-of-the-data-and-use-the-trimmed-data-set-to-carry-out-analysis-to-make-inference-about-the-central-location}
+
+    Section 3.4 of the book says that by trimming the data we can get a more
+reliable measure of the central value. It then goes on to say that this
+is particularly important when the sample mean is used to predict the
+population central value. So the answer to the question is yes, trimming
+some of the data can be used to make inference about the central
+location. I think there are some caveats to this and one needs to be
+mindful about the data they are excluding. I think it's very possible
+that your data might be bimodal and you may be discarding evidence of
+that second mound if you don't have enough samples.
+
+    \paragraph{2b. When the data set has some extreme outliers, can we trim
+some of the data and use the trimmed data set to carry out analysis to
+make inference about the dispersion of the
+population?}\label{b.-when-the-data-set-has-some-extreme-outliers-can-we-trim-some-of-the-data-and-use-the-trimmed-data-set-to-carry-out-analysis-to-make-inference-about-the-dispersion-of-the-population}
+
+    I think it's possible to make meaningful observations about the
+dispersion of the data using a trimmed data set. The boxplot is a great
+way to visualize the variability of the data and it identifies the
+potential outliers that are outside of the lower/upper limits.
+
+I want to distinguish between ``observations'' and ``carrying out
+analysis/make inferences''. What I stated above is that using a boxplot,
+you can exclude outliers and still make meaningul observations. But I
+think that by trimming data, which significantly alters the standard
+deviation, you can't make any inferences about the population.
+
+I think the main difference between using trimmed data for inferring
+central location versus using trimmed data for inferring variability is
+that central location has other measures that you can use to validate
+the trimmed mean. You can compare it to the original median or mode to
+validate the impact of the trimming. But you don't have that safety net
+when using trimmed data for analyzing variability.
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+\subsubsection{Question 3}\label{question-3}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{supplier\PYZus{}1} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{189.9}\PY{p}{,}\PY{l+m+mf}{191.9}\PY{p}{,}\PY{l+m+mf}{190.9}\PY{p}{,}\PY{l+m+mf}{183.8}\PY{p}{,}\PY{l+m+mf}{185.5}\PY{p}{,}\PY{l+m+mf}{190.9}\PY{p}{,}\PY{l+m+mf}{192.8}\PY{p}{,}\PY{l+m+mf}{188.4}\PY{p}{,}\PY{l+m+mf}{187.0}\PY{p}{]}\PY{p}{)}
+        \PY{n}{supplier\PYZus{}2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{158.6}\PY{p}{,}\PY{l+m+mf}{156.4}\PY{p}{,}\PY{l+m+mf}{157.7}\PY{p}{,}\PY{l+m+mf}{154.1}\PY{p}{,}\PY{l+m+mf}{152.3}\PY{p}{,}\PY{l+m+mf}{159.5}\PY{p}{,}\PY{l+m+mf}{158.1}\PY{p}{,}\PY{l+m+mf}{150.9}\PY{p}{,}\PY{l+m+mf}{156.9}\PY{p}{]}\PY{p}{)}
+        \PY{n}{supplier\PYZus{}3} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{218.6}\PY{p}{,}\PY{l+m+mf}{208.4}\PY{p}{,}\PY{l+m+mf}{187.1}\PY{p}{,}\PY{l+m+mf}{199.5}\PY{p}{,}\PY{l+m+mf}{202.0}\PY{p}{,}\PY{l+m+mf}{211.1}\PY{p}{,}\PY{l+m+mf}{197.6}\PY{p}{,}\PY{l+m+mf}{204.4}\PY{p}{,}\PY{l+m+mf}{206.8}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{suppliers} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{supplier\PYZus{}1}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{supplier\PYZus{}1}\PY{p}{,} 
+                                  \PY{l+s}{\PYZdq{}}\PY{l+s}{supplier\PYZus{}2}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{supplier\PYZus{}2}\PY{p}{,} 
+                                  \PY{l+s}{\PYZdq{}}\PY{l+s}{supplier\PYZus{}3}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{supplier\PYZus{}3}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+    \paragraph{3a. Compute mean and standard deviation for each
+supplier}\label{a.-compute-mean-and-standard-deviation-for-each-supplier}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Supplier 1: mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{, std dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} 
+                \PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}1}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}1}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Supplier 2: mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{, std dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} 
+                \PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}2}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}2}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Supplier 3: mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{, std dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} 
+                \PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}3}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}3}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Supplier 1: mean: 189.011111111, std dev: 3.05223051409
+Supplier 2: mean: 156.055555556, std dev: 2.96989524694
+Supplier 3: mean: 203.944444444, std dev: 8.95629821845
+    \end{Verbatim}
+
+    \paragraph{3b. Plot the data}\label{b.-plot-the-data}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k+kn}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}1}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Supplier 1}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{g}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}2}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Supplier 2}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{suppliers}\PY{o}{.}\PY{n}{supplier\PYZus{}3}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Supplier 3}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Supplier sample distances}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Sample distance}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{HW2_files/HW2_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{3c. Which supplier appears to provide material that produces
+lenses having power closest to the target
+value?}\label{c.-which-supplier-appears-to-provide-material-that-produces-lenses-having-power-closest-to-the-target-value}
+
+    If I understood the question correctly, these values are distances from
+a target which means that Supplier 2 is clearly the winner since their
+distances are the lowest of the 3. The data suggests that on average,
+Supplier 2 is about 156 units away from their target whereas Suppliers 1
+and 3 are about 189 and 204 units away from their target, respectively.
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+\subsubsection{Question 4}\label{question-4}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{demands}\PY{l+s}{\PYZdq{}}\PY{p}{:} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{28}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{193}\PY{p}{,}\PY{l+m+mi}{65}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{147}\PY{p}{,}\PY{l+m+mi}{76}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}
+                                                  \PY{l+m+mi}{84}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{62}\PY{p}{,}\PY{l+m+mi}{26}\PY{p}{,}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{226}\PY{p}{,}\PY{l+m+mi}{54}\PY{p}{,}\PY{l+m+mi}{46}\PY{p}{,}\PY{l+m+mi}{108}\PY{p}{,}
+                                                  \PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{105}\PY{p}{,}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{273}\PY{p}{,}\PY{l+m+mi}{184}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{55}\PY{p}{,}\PY{l+m+mi}{41}\PY{p}{,}\PY{l+m+mi}{26}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+    \paragraph{4a. Calculate mean and median for the
+data}\label{a.-calculate-mean-and-median-for-the-data}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{mean} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{demands}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{median} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{demands}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Mean: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{mean}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Median: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{median}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Mean: 57.8235294118
+Median: 34.0
+    \end{Verbatim}
+
+    \paragraph{4b. Which measure appears to best represent the center of the
+data?}\label{b.-which-measure-appears-to-best-represent-the-center-of-the-data}
+
+    In this case, I think the median is a better measure of the center of
+the data since it is a resistant measure and this data is skewed right
+by a few extreme values.
+
+    \paragraph{4c. Calculate range and standard
+deviation.}\label{c.-calculate-range-and-standard-deviation.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{dfRange} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{demands}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{df}\PY{o}{.}\PY{n}{demands}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}
+         \PY{n}{stdDev} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{demands}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Range: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{dfRange}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Standard dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{stdDev}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Range: 273
+Standard dev: 70.6873057003
+    \end{Verbatim}
+
+    \paragraph{4d. Use range to estimate std dev. How close is the
+approximation?}\label{d.-use-range-to-estimate-std-dev.-how-close-is-the-approximation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Standard dev approximation: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{dfRange} \PY{o}{/} \PY{l+m+mf}{4.}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Standard dev approximation: 68.25
+    \end{Verbatim}
+
+    The approximation is actually pretty close to the true value. It's off
+by about 2.5 units (about 4\%)
+
+    \paragraph{4e. Construct intervals for
+$\bar{y} \pm 1s, \bar{y} \pm 2s, \bar{y} \pm 3s$, count number of data
+falling in each interval, convert to percentages and compare with
+Empirical
+Rule.}\label{e.-construct-intervals-for-bary-pm-1s-bary-pm-2s-bary-pm-3s-count-number-of-data-falling-in-each-interval-convert-to-percentages-and-compare-with-empirical-rule.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{output} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{[\PYZob{}0[0]\PYZcb{}, \PYZob{}0[1]\PYZcb{}]: \PYZob{}1\PYZcb{} items =\PYZgt{} \PYZob{}2:.2f\PYZcb{}}\PY{l+s}{\PYZpc{}}\PY{l+s}{\PYZdq{}} \PY{c}{\PYZsh{}output format string}
+         
+         \PY{n}{firstInt} \PY{o}{=} \PY{p}{(}\PY{n}{mean} \PY{o}{\PYZhy{}} \PY{n}{stdDev}\PY{p}{,} \PY{n}{mean} \PY{o}{+} \PY{n}{stdDev}\PY{p}{)}
+         \PY{n}{firstIntValues} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{firstInt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{firstInt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{n}{firstCount} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{firstIntValues}\PY{p}{)}
+         \PY{n}{firstPercentage} \PY{o}{=} \PY{l+m+mf}{100.0} \PY{o}{*} \PY{n}{firstCount} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{df}\PY{p}{)}
+         \PY{k}{print} \PY{n}{output}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{firstInt}\PY{p}{,} \PY{n}{firstCount}\PY{p}{,} \PY{n}{firstPercentage}\PY{p}{)}
+         
+         \PY{n}{secondInt} \PY{o}{=} \PY{p}{(}\PY{n}{mean} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{stdDev}\PY{p}{,} \PY{n}{mean} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{stdDev}\PY{p}{)}
+         \PY{n}{secondIntValues} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{secondInt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{secondInt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{n}{secondCount} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{secondIntValues}\PY{p}{)}
+         \PY{n}{secondPercentage} \PY{o}{=} \PY{l+m+mf}{100.0} \PY{o}{*} \PY{n}{secondCount} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{df}\PY{p}{)}
+         \PY{k}{print} \PY{n}{output}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{secondInt}\PY{p}{,} \PY{n}{secondCount}\PY{p}{,} \PY{n}{secondPercentage}\PY{p}{)}
+         
+         \PY{n}{thirdInt} \PY{o}{=} \PY{p}{(}\PY{n}{mean} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{stdDev}\PY{p}{,} \PY{n}{mean} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{stdDev}\PY{p}{)}
+         \PY{n}{thirdIntValues} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{thirdInt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{demands} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{thirdInt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{n}{thirdCount} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{thirdIntValues}\PY{p}{)}
+         \PY{n}{thirdPercentage} \PY{o}{=} \PY{l+m+mf}{100.0} \PY{o}{*} \PY{n}{thirdCount} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{df}\PY{p}{)}
+         \PY{k}{print} \PY{n}{output}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{thirdInt}\PY{p}{,} \PY{n}{thirdCount}\PY{p}{,} \PY{n}{thirdPercentage}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[-12.8637762885, 128.510835112]: 29 items => 85.29\%
+[-83.5510819888, 199.198140812]: 32 items => 94.12\%
+[-154.238387689, 269.885446513]: 33 items => 97.06\%
+    \end{Verbatim}
+
+    \paragraph{4f. Why do you think the Empirical Rule and your percentages
+do not match
+well?}\label{f.-why-do-you-think-the-empirical-rule-and-your-percentages-do-not-match-well}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{df}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{hist}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fb25b18ac50>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{HW2_files/HW2_43_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The empirical rule percentages did not match well with the percentages
+above because, as the histogram of the data shows, it is not evenly
+distributed. It has a large concentration of values on one side of the
+distribution and a few extreme outliers to the right. For this reason,
+over 85\% of the values were within one standard deviation of the mean.
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+    \newpage 
+\subsubsection{Question 5}\label{question-5}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{df}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{box}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{vert}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{xlim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{300}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fb25898a210>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{HW2_files/HW2_46_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{5a. Is the data left-skewed, symmetric or
+right-skewed?}\label{a.-is-the-data-left-skewed-symmetric-or-right-skewed}
+
+    The data is right-skewed as shown in Lesson 2.3. The box is longer
+towards the right, and the line from the 3rd quartile to the upper
+adjacent value is longer.
+
+    \paragraph{5b. What are the outliers?}\label{b.-what-are-the-outliers}
+
+    The potential outliers are the values greater than 147: {[} 184, 193,
+226, 273 {]}
+
+    \paragraph{5c. Is the median closer to the lower quartile or the upper
+quartile? Does that indicate that the density of data between first
+quartile and the median is higher than the density of data between the
+median and the third
+quartile?}\label{c.-is-the-median-closer-to-the-lower-quartile-or-the-upper-quartile-does-that-indicate-that-the-density-of-data-between-first-quartile-and-the-median-is-higher-than-the-density-of-data-between-the-median-and-the-third-quartile}
+
+    For this data, the median is closer to the lower quartile. In this
+scenario, there is a difference in density. There are many more points
+between the first quartile and the median than between the median and
+the third quartile. We can see that corroborated by the histogram above.
+However, I don't think that the median being closer to the lower
+quartile necessarily indicates that. It could also be a result of how
+sparse the data points are, especially with fewer samples.
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+\subsubsection{Question 6}\label{question-6}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{paperTowelData} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{hw2\PYZus{}paperTowelData.csv}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{n+nb+bp}{None}\PY{p}{)}
+         \PY{n}{pricePerRoll} \PY{o}{=} \PY{n}{paperTowelData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Price per Roll}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{pricePerSheet} \PY{o}{=} \PY{n}{paperTowelData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Price per Sheet}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+    \paragraph{6a. Compute standard deviation for both price per roll and
+price per
+sheet.}\label{a.-compute-standard-deviation-for-both-price-per-roll-and-price-per-sheet.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Price per roll std dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{pricePerRoll}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Price per sheet std dev: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{pricePerSheet}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Price per roll std dev: 0.423304589347
+Price per sheet std dev: 0.00553029698864
+    \end{Verbatim}
+
+    \paragraph{6b. Which is more variable, price per roll or price per
+sheet? Should you use $s$ (standard deviation) or $CV$ (Coefficient of
+Variation)?}\label{b.-which-is-more-variable-price-per-roll-or-price-per-sheet-should-you-use-s-standard-deviation-or-cv-coefficient-of-variation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{perRollCV} \PY{o}{=} \PY{n}{pricePerRoll}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{pricePerRoll}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{perSheetCV} \PY{o}{=} \PY{n}{pricePerSheet}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{pricePerSheet}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Price per roll CV: }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{perRollCV} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Price per sheet CV: }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{perSheetCV} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Price per roll CV: 46.03\%
+Price per sheet CV: 48.78\%
+    \end{Verbatim}
+
+    Although the price per roll has a higher standard deviation, the price
+per sheet has a higher CV, which indicates that the price per sheet has
+greater variability relative to the magnitude of it's mean.
+
+    \paragraph{6c. Do you think that IQR is a good measure to compare the
+variability of these two
+variables?}\label{c.-do-you-think-that-iqr-is-a-good-measure-to-compare-the-variability-of-these-two-variables}
+
+    I think that IQR would be just as poor as standard deviation for
+comparing variability since both of those measures are in the same units
+as the data. That makes it difficult to compare across data sets.
+
+    \begin{center}\rule{3in}{0.4pt}\end{center}
+
+\subsubsection{Question 7}\label{question-7}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{singerData} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{hw2\PYZus{}singers.csv}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{basses} \PY{o}{=} \PY{n}{singerData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Bass}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{sopranos} \PY{o}{=} \PY{n}{singerData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Soprano}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{altos} \PY{o}{=} \PY{n}{singerData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Alto}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{tenors} \PY{o}{=} \PY{n}{singerData}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Tenor}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+    \paragraph{7a. Find descriptive statistics for each type of singer. For
+each case, does the approximate value of $s$ give a good estimate of
+$s$?}\label{a.-find-descriptive-statistics-for-each-type-of-singer.-for-each-case-does-the-approximate-value-of-s-give-a-good-estimate-of-s}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Bass singers: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{basses}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Alto singers: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{altos}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Soprano singers: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{sopranos}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Tenor singers: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{tenors}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bass singers: 
+count    36.000000
+mean     70.750000
+std       2.430461
+min      66.000000
+25\%      69.000000
+50\%      71.000000
+75\%      72.000000
+max      75.000000
+Name: Bass, dtype: float64
+
+Alto singers: 
+count    35.000000
+mean     64.885714
+std       2.794653
+min      60.000000
+25\%      63.000000
+50\%      65.000000
+75\%      66.500000
+max      72.000000
+Name: Alto, dtype: float64
+
+Soprano singers: 
+count    39.000000
+mean     64.717949
+std       2.459661
+min      60.000000
+25\%      63.000000
+50\%      65.000000
+75\%      66.000000
+max      72.000000
+Name: Soprano, dtype: float64
+
+Tenor singers: 
+count    20.000000
+mean     69.150000
+std       3.216323
+min      64.000000
+25\%      66.750000
+50\%      68.500000
+75\%      71.250000
+max      76.000000
+Name: Tenor, dtype: float64
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Bass approx s: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{p}{(}\PY{n}{basses}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{basses}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{l+m+mf}{4.}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Alot approx s: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{p}{(}\PY{n}{altos}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{altos}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{l+m+mf}{4.}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Soprano approx s: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{p}{(}\PY{n}{sopranos}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{sopranos}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{l+m+mf}{4.}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Tenor approx s: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{p}{(}\PY{n}{tenors}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{tenors}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{l+m+mf}{4.}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bass approx s: 2.25
+Alot approx s: 3.0
+Soprano approx s: 3.0
+Tenor approx s: 3.0
+    \end{Verbatim}
+
+    Comparing the approximate values of $s$ to the actual values of $s$,
+they appear to be fair estimates. I think they are close enough to be
+useful for getting an idea of the variability of the data sets. The
+soprano estimate seems to be the most off by about 22\%.
+
+    \paragraph{7b. Draw boxplots side by side for these cases. Comment on
+the central tendency and the dispersion for the four types of
+singers.}\label{b.-draw-boxplots-side-by-side-for-these-cases.-comment-on-the-central-tendency-and-the-dispersion-for-the-four-types-of-singers.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{singerData}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{box}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{vert}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{xlim}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{55}\PY{p}{,}\PY{l+m+mi}{80}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fb2588fbad0>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{HW2_files/HW2_69_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    With regard to central tendency, the means are very close to the
+medians. With the exception of the tenor data (which looks a little
+skewed right), the data looks very evenly distributed.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
