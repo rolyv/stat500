@@ -1,0 +1,45 @@
+College,Sport,Gender,Height,Ideal-Height,Weight,Ideal-weight,Hair color,Hair dyed?,Pairs of jeans,Hub food,Race,Left wrist,Right wrist,Left arm,Right arm,Head 1,Head 2,GPA,Hours st>>,Hours TV
+Health,O,*,68,68,180,136,brown,no,0,unknown,Caucasian,17,16.5,70,71,59.5,59,3.75,9,9
+HM & H,F,F,63,66,108,115,Brown,yes,14,good,Caucasian,14.5,15,69,71,55,54.7,3.45,5,3
+Education,B,F,63,65,114,110,Black,no,4,good,Asian,14.4,15,63.5,63,55,56.2,3.1,8,10
+Engineering,O,M,72,72,180,170,Black,no,4,*,*,17.5,17.5,74,73.5,59,58.5,3.45,15,7
+"Hotel, Restaurant &Institutional Mangement",B,F,5.3,5.8,140,119,Brown,yes,8,good,other,6,6,24,24,22,22,3.9,5,12
+Genetics Program,O,F,70,71,155,145,Brown,no,4,good,Caucasian,15.5,15.7,74.5,70.5,56.2,58.5,,6,9
+Agricultural Sciences,O,M,68,74,145,135,Brown,no,3,good,Caucasian,16.5,16.7,74,73,57,58,3.89,5,10
+College of Science,B,F,62.5,,104,100,Black,no,4,good,Asian,12.7,13.1,63,66.3,55.5,55.5,,0.5,0
+College of Science,O,F,62,70,108,99,Black,yes,7,good,Asian,13.9,14.1,61,59.5,54.5,54.5,,1,0
+HPA,O,F,65,65,120,120,Black,no,2,good,Asian,15,16,67,67,55,55,3.7,5,5
+HPA,B,M,67,72,120,140,Black,no,1,good,Asian,15.5,15.7,70.5,70.5,58.3,58.4,,5,0
+College of Human and Health Development,O,F,64,72,110,110,Black,yes,5,poor,Asian,15,16.1,67,67.5,53.7,57.8,,7,7
+College of Human and Health Development,F,F,63,63,115,100,Black,yes,4,good,Asian,15,14.5,62,63,57.5,58,,,
+College of Agricultural Sciences,O,F,62,65,118,110,Blonde,no,10,good,Caucasian,15,14.5,61,64,51,52,3.78,4,10
+College of Science,O,F,73,73,155,155,Brown,no,5,good,Caucasian,16,16,79,79,58,58,,3,2
+Life Science Consortium,O,M,68.9,80,165,160,Black,no,2,good,Asian,17,17.5,68,69,60,60,3.65,5,7
+College of Health and Human Development,O,F,60,70,132,120,Black,no,4,good,Asian,14,14,67.5,67.5,54.5,56,3.33,10,7
+College of Health and Human Development,F,M,76,76,200,185,Brown,no,4,poor,Caucasian,17,17,74,24,24,,6,0,
+College of Health and Human Development,O,M,71,72,150,150,Black,no,6,good,Asian,17,17,73,76,57,58,3.52,3,10
+College of Health and Human Development,O,F,63.5,65,125,120,Black,no,6,good,Asian,15,15.5,66,67,57,57.5,,6,5
+College of Health and Human Development,F,F,65,68,114,105,Blonde,yes,40,good,Caucasian,15.5,15.5,68.5,68.5,54.5,56,3.62,9,4
+College of Engineering,B,M,69,72,165,147,Black,no,6,good,Asian,16,17,78,77.5,59.5,59.5,,16,6
+College of Science,O,M,77,74,218,216,Blonde,yes,4,poor,other,18,18,83,83,57,58,3.61,1,0
+College of Health and Human Development,O,M,68,72,200,180,Black,no,8,good,African American/Black,17,17,74,75,62,62.5,3.6,7,7
+College of Agriculture,O,F,67,72,153,145,Brown,yes,12,excellent,Other,17,18,64,69,57,56.5,3,3,5
+College of Agriculture,B,F,67,70,170,125,Blonde,no,7,good,Caucasian,16.1,16,73.5,71,56.8,54.8,3.84,10,12
+College of Health and Human Development,O,F,62,,126,110,Black,yes,5,good,*,14.4,14.5,67.3,67.3,57,56.5,56.8,3,5
+College of Science,F,M,72,72,160,171,Black,no,2,good,Asian,16,16,76,75.5,57,56.5,3.3,5,5
+Genetics Program,O,F,5.3,5.5,101,106,Black,yes,6,good,Asian,14,14.5,62,62,55.5,55,3.8,3,0
+College of Engineering,O,M,68,72,140,150,Black,no,6,good,Asian,15.5,15.5,66.5,68.5,58,58,3.78,2,10
+Smeal College,B,M,69,72,178,170,Black,no,10,good,Asian,16.5,16.5,72,73,58.1,58,3.5,3,10
+College of Earth Science,O,M,70,72,160,180,Brown,yes,3,poor,Caucasian,15.5,16,68,67,57.5,57.5,3.73,2,6
+"College of Science, IGPG",O,F,64,70,113,105,Black,no,8,good,Asian,5.5,5.5,26.5,26.5,22,22,3.7,2,5
+College of Agriculture,B,F,63,72,130,120,Black,no,8,poor,Asian,14.5,15.5,64,64,55,55.5,3.76,15,12
+College of Science,F,M,71,72,175,175,Brown,yes,6,good,Caucasian,16,16,72.5,72.5,57,56.5,3.4,6,10
+College of Health and Human Development,O,F,68,68,155,140,Brown,yes,11,good,Caucasian,15.5,15.5,67.5,67.5,56,56,3.62,5,24
+College of Health and Human Development,F,F,65,67,145,135,Blonde,yes,5,good,Caucasian,15.5,15.5,64,63.5,58,57.5,3.5,14,14
+College of Health and Human Development,B,M,68.45,70,170,140,Black,no,0,good,Asian,18,18,67.5,67,59.5,60,,6,0
+College of Science,F,M,66.9,66,135,132,Black,no,6,poor,Asian,18,18,68,70,58,59,3.95,6,10
+College of Agriculture,B,F,61,66,110,100,Brown,yes,4,poor,Asian,14.5,14.5,64.5,66.5,56,57,3.85,5,10
+College of Health and Human Development,F,F,66,69,130,,Blonde,no,3,good,Caucasian,14,15,64.5,66.5,55.5,55.5,3.87,4,5
+College of Engineering,O,M,71,72,170,160,Black,no,5,good,Asian,19,18.5,68,69,60,60.3,3.7,6,5
+College of Health and Human Development,F,M,66,67,140,130,Blonde,no,4,good,Caucasian,16,16,66,66,56,56,3.7,4,4
+College of Education,O,F,68.5,67,132,122,Black,no,5,good,Asian,15,15,68,68,57,57.5,,8,1.5
